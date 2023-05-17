@@ -10,30 +10,24 @@ window.addEventListener("scroll", function () {
   }
 });
 
-// Texte de bienvenue à afficher
-const welcomeText =
-  "Bienvenue sur mon portfolio !\nJe suis passionné par le développement web et la création d'expériences utilisateur exceptionnelles.";
+const title = document.querySelector(".typewriter");
 
-// Attend que tout le contenu soit chargé
-window.onload = function () {
-  const welcomeContainer = document.getElementById("welcome-text");
-  let i = 0;
-  let typingEffect;
+const txt = "Bienvenue sur mon portfolio.";
 
-  function typeWriter() {
-    if (i < welcomeText.length) {
-      welcomeContainer.innerHTML += welcomeText.charAt(i);
-      i++;
-      typingEffect = setTimeout(typeWriter, 50); // Délai entre chaque caractère (en millisecondes)
-    } else {
-      welcomeContainer.innerHTML += '<span class="cursor"></span>'; // Ajoute le curseur à la fin du texte
-    }
+function typewriter(word, index) {
+  if (index < word.length) {
+    setTimeout(() => {
+      title.innerHTML += `<span>${word[index]}</span>`;
+      typewriter(txt, index + 1);
+    }, 150);
   }
+}
 
-  typeWriter(); // Lancement de la fonction pour afficher le texte caractère par caractère
-};
+setTimeout(() => {
+  typewriter(txt, 0);
+}, 1700);
 
 // Arrête l'effet d'écriture si l'utilisateur fait défiler la page avant la fin de l'animation
 window.addEventListener("scroll", function () {
-  clearTimeout(typingEffect);
+  clearTimeout(typewriter);
 });
