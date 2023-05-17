@@ -24,35 +24,43 @@
 
 @font-face {
   font-family: "Segoe UI Bold Italic";
-  font-style: normal;
-  font-weight: normal;
   src: local("Segoe UI Bold Italic"),
     url("../fonts/Segoe_UI/Segoe\ UI\ Bold\ Italic.woff") format("woff");
 }
 
 @font-face {
-  font-family: "FiraCode-Medium";
-  font-style: normal;
-  font-weight: normal;
-  src: local("FiraCode-Medium"),
-    url("../fonts/Fira_Code/static/FiraCode-Medium.ttf");
+  font-family: "OpenSans Bold";
+  src: url("../fonts/Open_Sans/static/OpenSans-Bold.ttf");
 }
 
 @font-face {
-  font-family: "FiraCode-Regular";
-  src: local("FiraCode-Regular"),
-    url("../fonts/Fira_Code/static/FiraCode-Regular.ttf");
+  font-family: "OpenSans ExtraBold";
+  src: url("../fonts/Open_Sans/static/OpenSans-ExtraBold.ttf");
 }
 
 @font-face {
-  font-family: "FiraCode-Light";
-  src: local("FiraCode-Regular"),
-    url("../fonts/Fira_Code/static/FiraCode-Light.ttf");
+  font-family: "OpenSans Light";
+  src: url("../fonts/Open_Sans/static/OpenSans-Light.ttf");
+}
+
+@font-face {
+  font-family: "OpenSans";
+  src: url("../fonts/Open_Sans/static/OpenSans-Regular.ttf");
+}
+
+@font-face {
+  font-family: "OpenSans_Condensed-Light";
+  src: url("../fonts/Open_Sans/static/OpenSans_Condensed-Light.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   font-family: "Segoe UI Regular", sans-serif;
-  box-sizing: border-box;
 }
 
 section.header {
@@ -60,6 +68,14 @@ section.header {
     url("../img/background.jpg");
   background-size: cover;
   min-height: 115vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Segoe UI Bold", sans-serif;
 }
 
 .header::before {
@@ -114,30 +130,111 @@ a.nav-link:hover {
   background-color: #171515;
 }
 
-#welcome-text {
-  font-family: "FiraCode-Light", "Courier New", Courier, monospace; /* Utilisation d'une police de type terminal */
-  font-size: 16px;
-  line-height: 1.5;
-  white-space: pre;
-  color: #fafafa;
+.logo {
+  margin-left: 5px;
+  color: #fff;
+  font-family: "OpenSans Bold";
+  font-weight: 800;
+}
+
+.typewriter-container {
+  font-family: "OpenSans Light";
   position: absolute;
-  bottom: 10vh;
+  bottom: 4vh;
+  margin-left: 3em;
 }
 
-.cursor {
+.typewriter-container > .typewriter {
+  font-family: "OpenSans Light";
+  letter-spacing: 3px;
+  font-weight: lighter;
+  font-size: 30px;
+  color: #fafafa;
   display: inline-block;
-  width: 8px;
-  height: 16px;
-  background-color: #fff;
-  animation: cursor-blink 1s infinite;
+  position: relative;
+  line-height: 1em;
 }
 
-@keyframes cursor-blink {
-  0%,
-  100% {
-    opacity: 0;
+.typewriter-container > .typewriter::after {
+  content: "";
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 15px;
+  background-color: #fafafa;
+  right: -15px;
+  bottom: 0;
+  animation: cursor 1s infinite;
+}
+
+@keyframes cursor {
+  0% {
+    opacity: 1;
   }
   50% {
+    opacity: 0;
+  }
+  100% {
     opacity: 1;
+  }
+}
+
+.home {
+  height: 100vh;
+}
+
+.intro {
+  padding-right: 3em;
+  text-align: end;
+  padding-top: 17vh;
+  display: flex;
+  flex-direction: column;
+  margin-left: 5rem;
+}
+
+.intro {
+  color: #fafafa;
+  max-width: 50%;
+  margin-left: auto;
+  overflow-x: hidden;
+}
+
+.intro h1 {
+  line-height: 0.8em;
+  font-size: 70px;
+  color: #fafafac0;
+  font-family: "OpenSans Bold";
+}
+
+.intro .hi {
+  font-size: 50px;
+  opacity: 0;
+  transform: translateX(+60px);
+  animation: show 0.8s 0.2s ease-out forwards;
+}
+
+.intro .introducing {
+  opacity: 0;
+  transform: translateX(+60px);
+  animation: show 0.8s 0.8s ease-out forwards;
+}
+
+.intro h1 .name {
+  color: #fafafa;
+}
+
+.intro .descri {
+  padding-top: 1em;
+  margin-left: auto;
+  width: 60%;
+  opacity: 0;
+  transform: translateX(+60px);
+  animation: show 0.9s 1.5s ease-out forwards;
+}
+
+@keyframes show {
+  100% {
+    opacity: 1;
+    transform: none;
   }
 }
