@@ -3,7 +3,7 @@ window.addEventListener("scroll", function () {
   var header = document.querySelector(".header");
   var containerRect = header.getBoundingClientRect();
 
-  if (containerRect.bottom <= 0) {
+  if (containerRect.bottom <= 10) {
     navbar.classList.add("scrolled");
   } else {
     navbar.classList.remove("scrolled");
@@ -11,6 +11,7 @@ window.addEventListener("scroll", function () {
 });
 
 const title = document.querySelector(".typewriter");
+const cursor = document.querySelector(".typewriter::after");
 
 const txt = "Bienvenue sur mon portfolio.";
 
